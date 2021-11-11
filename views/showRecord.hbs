@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav>
+        <h4>Result Management</h4>
+
+        <form action="logout" method="POST" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+
+    </nav>
+
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">RollNo</th>
+                <th scope="col">Power</th>
+                <th scope="col">Strength</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {{#each record}}
+
+            <tr>
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.rollNo}}</td>
+                <td>{{this.power}}</td>
+                <td>{{this.strength}}</td>
+
+                <td><a href="/auth/deleteRecord/{{this.id}}"> <i class="fas fa-trash text-danger"
+                            style="font-size: 30px;"></i></a> <a href="/auth/editRecord/{{this.id}}"> <i
+                            class="fas fa-pen-alt text-primary" style="font-size: 30px;"></i></a>
+                </td>
+
+            </tr>>
+
+            {{/each}}
+
+        </tbody>
+
+    </table>
+
+    <div class="container text-center">
+        <form action="addAnotherRecord" method="post" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add
+                Another Record</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

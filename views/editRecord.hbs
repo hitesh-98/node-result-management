@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav>
+        <h4>Result Management</h4>
+
+        <form action="/auth/showRecord" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Show Records</button>
+        </form>
+
+        <form action="/auth/logoutTeacher" method="POST" class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+
+    </nav>
+
+
+    {{#if message}}
+    <h4 class="alert alert-success mt-4">{{message}}</h4>
+    {{/if}}
+
+    {{#each results}}
+
+    <form action="/auth/editRecord/{{this.id}}" method="POST">
+        <div class="container col-md-5">
+            <div class="card">
+                <div class="card-body">
+
+                    <fieldset class="form-group">
+                        <label>Name</label> <input type="text" class="form-control" name="name" value="{{this.name}}"
+                            required />
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label>Roll No</label> <input type="text" class="form-control" name="rollNo"
+                            value="{{this.rollNo}}" required />
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label>Power</label> <input type="text" class="form-control" name="power" value="{{this.power}}"
+                            required />
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label>Strength</label> <input type="text" class="form-control" name="strength"
+                            value="{{this.strength}}" required />
+                    </fieldset>
+
+                    <button type="submit" class="btn btn-success">Update Student Record</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {{/each}}
+
+
+</body>
+
+</html>
